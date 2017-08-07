@@ -1,6 +1,11 @@
-//
-// Created by smartmachines on 8/5/17.
-//
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the implementation of the JsControlFactory class
+ *
+ * \author      Mike Qi
+ * \date        08/05/2017
+ * \file        JsControlFactory.cpp
+ */
 
 #include "JsControlFactory.h"
 

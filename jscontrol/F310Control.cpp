@@ -1,12 +1,11 @@
-/********************************************************************
-	Rhapsody	: 8.2.1 
-	Login		: alfred.qiao
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: F310Control
-//!	Generated Date	: Fri, 4, Aug 2017  
-	File Path	: DefaultComponent\DefaultConfig\F310Control.cpp
-*********************************************************************/
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the implementation of the F310Control class
+ *
+ * \author      Mike Qi
+ * \date        08/07/2017
+ * \file        F310Control.cpp
+ */
 
 //## auto_generated
 #include "F310Control.h"
@@ -98,7 +97,3 @@ JsControlState F310Control::singleLoop(void) {
 
     return state_;
 }
-
-/*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\F310Control.cpp
-*********************************************************************/

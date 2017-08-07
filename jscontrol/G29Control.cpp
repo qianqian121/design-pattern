@@ -1,13 +1,11 @@
-/********************************************************************
-	Rhapsody	: 8.2.1 
-	Login		: alfred.qiao
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: G29Control
-//!	Generated Date	: Fri, 4, Aug 2017  
-	File Path	: DefaultComponent\DefaultConfig\G29Control.cpp
-*********************************************************************/
-
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the implementation of the G29Control class
+ *
+ * \author      Mike Qi
+ * \date        08/07/2017
+ * \file        G29Control.cpp
+ */
 //## auto_generated
 #include "G29Control.h"
 //## package Default
@@ -100,7 +98,3 @@ JsControlState G29Control::singleLoop(void) {
 
     return state_;
 }
-
-/*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\G29Control.cpp
-*********************************************************************/

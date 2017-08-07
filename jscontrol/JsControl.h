@@ -1,12 +1,11 @@
-/*********************************************************************
-	Rhapsody	: 8.2.1 
-	Login		: alfred.qiao
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: JsControl
-//!	Generated Date	: Fri, 4, Aug 2017  
-	File Path	: DefaultComponent\DefaultConfig\JsControl.h
-*********************************************************************/
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the interface for the JsControl class
+ *
+ * \author      Mike Qi
+ * \date        08/07/2017
+ * \file        JsControl.h
+ */
 
 #ifndef JsControl_H
 #define JsControl_H
@@ -89,6 +88,3 @@ private :
 };
 
 #endif
-/*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\JsControl.h
-*********************************************************************/

@@ -1,6 +1,11 @@
-//
-// Created by smartmachines on 8/5/17.
-//
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the interface for the JsControlFactory class
+ *
+ * \author      Mike Qi
+ * \date        08/05/2017
+ * \file        JsControlFactory.h
+ */
 
 #ifndef DESIGN_PATTERN_JSCONTROLFACTORY_H
 #define DESIGN_PATTERN_JSCONTROLFACTORY_H

@@ -1,12 +1,11 @@
-/*********************************************************************
-	Rhapsody	: 8.2.1 
-	Login		: alfred.qiao
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: F310Control
-//!	Generated Date	: Fri, 4, Aug 2017  
-	File Path	: DefaultComponent\DefaultConfig\F310Control.h
-*********************************************************************/
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the interface for the F310Control class
+ *
+ * \author      Mike Qi
+ * \date        08/07/2017
+ * \file        F310Control.h
+ */
 
 #ifndef F310Control_H
 #define F310Control_H
@@ -32,6 +31,3 @@ public :
 };
 
 #endif
-/*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\F310Control.h
-*********************************************************************/

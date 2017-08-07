@@ -1,12 +1,11 @@
-/********************************************************************
-	Rhapsody	: 8.2.1 
-	Login		: alfred.qiao
-	Component	: DefaultComponent 
-	Configuration 	: DefaultConfig
-	Model Element	: JsControl
-//!	Generated Date	: Fri, 4, Aug 2017  
-	File Path	: DefaultComponent\DefaultConfig\JsControl.cpp
-*********************************************************************/
+/*!
+ * \copyright	2017 (c) Samsung Semiconductor, Inc. - Strategy & Innovation Center, Smart Machines
+ * \brief 		This file contains the implementation of the JsControl class
+ *
+ * \author      Mike Qi
+ * \date        08/07/2017
+ * \file        JsControl.cpp
+ */
 
 //## auto_generated
 #include "JsControl.h"
@@ -76,7 +75,3 @@ void JsControl::setThrottle_(const int p_throttle_) {
 const std::string JsControl::getDeviceName() {
     return joystick_.getDeviceName();
 }
-
-/*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\JsControl.cpp
-*********************************************************************/
