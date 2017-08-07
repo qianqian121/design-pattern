@@ -61,10 +61,91 @@ private:
         }
     }
 
+    void on_telemetry_available(DDSDataReader *reader) {
+        VehicleTelemetry::Seq dataSeq;
+        DDS_SampleInfoSeq infoSeq;
+        DDS_ReturnCode_t rc;
+
+        /* The following narrow function should never fail in our case, as
+         * we have only one reader in the application. It simply performs
+         * only a safe cast of the generic data reader into a specific
+         * HelloWorldDataReader.
+         */
+        VehicleTelemetry::DataReader *helloReader = VehicleTelemetry::DataReader::narrow(reader);
+        if (helloReader == NULL) {
+            std::cerr << "! Unable to narrow data reader" << std::endl;
+            return;
+        }
+
+        rc = helloReader->take(
+                dataSeq,
+                infoSeq,
+                DDS_LENGTH_UNLIMITED,
+                DDS_ANY_SAMPLE_STATE,
+                DDS_ANY_VIEW_STATE,
+                DDS_ANY_INSTANCE_STATE);
+        if (rc == DDS_RETCODE_NO_DATA) {
+            return;
+        } else if (rc != DDS_RETCODE_OK) {
+            std::cerr << "! Unable to take data from data reader, error "
+                      << rc << std::endl;
+            return;
+        }
+
+        for (int i = 0; i < dataSeq.length(); ++i) {
+            if (infoSeq[i].valid_data) {
+                // Process the data
+                processTelemetry(dataSeq[i]);
+            }
+        }
+
+        rc = helloReader->return_loan(dataSeq, infoSeq);
+        if (rc != DDS_RETCODE_OK) {
+            std::cerr << "! Unable to return loan, error "
+                      << rc << std::endl;
+        }
+    }
+
     void processData(ControllerCommands &commands) {
         BackEnd *ptr = (BackEnd *)context_;
         std::cerr << commands.steer_angle << std::endl;
         ptr->setSteeringAngle((double)commands.steer_angle);
+        std::cerr << commands.brake << std::endl;
+        ptr->setBrake((double)commands.brake);
+        std::cerr << commands.throttle << std::endl;
+        ptr->setThrottle((double)commands.throttle);
+        std::cerr << commands.desired_speed << std::endl;
+        ptr->setDesiredVelocity((double)commands.desired_speed);
+//        std::cerr << commands.dead_switch << std::endl;
+//        ptr->setDeadmanSwitch((bool)commands.dead_switch);
+
+    }
+
+    void processTelemetry(VehicleTelemetry &telemetry)
+    {
+        BackEnd *ptr = (BackEnd *)context_;
+        std::cerr << telemetry.velocity_mph << std::endl;
+        ptr->setVelocityMPH((double)telemetry.velocity_mph);
+        std::cerr << telemetry.velocity_kph << std::endl;
+        ptr->setVelocityKPH((double)telemetry.velocity_kph);
+        std::cerr << telemetry.throttle << std::endl;
+        ptr->setThrottlePosition((double)telemetry.throttle);
+        std::cerr << telemetry.brake << std::endl;
+        ptr->setBrakePosition((double)telemetry.brake);
+        std::cerr << telemetry.steering << std::endl;
+        ptr->setHandWheelAngle((double)telemetry.steering);
+        std::cerr << telemetry.roadWheel << std::endl;
+        ptr->setRoadWheelAngle((double)telemetry.roadWheel);
+        std::cerr << telemetry.isMoving << std::endl;
+        ptr->setIsMoving((bool)telemetry.isMoving);
+//        std::cerr << telemetry.isEstop << std::endl;
+//        ptr->setIsEstop((bool)telemetry.isEstop);
+        std::cerr << telemetry.vehicleStatus << std::endl;
+        ptr->setVehicleStatus((QSTRING)telemetry.vehicleStatus);
+        std::cerr << telemetry.vehicleState << std::endl;
+        ptr->setVehicleState((QSTRING)telemetry.vehicleState);
+//        std::cerr << telemetry.gear << std::endl;
+//        ptr->setGear((int)telemetry.gear);
     }
 
     void* context_;
