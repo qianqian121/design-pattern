@@ -3,38 +3,35 @@
 	Login		: alfred.qiao
 	Component	: DefaultComponent 
 	Configuration 	: DefaultConfig
-	Model Element	: G29Control
+	Model Element	: F310Control
 //!	Generated Date	: Fri, 4, Aug 2017  
-	File Path	: DefaultComponent\DefaultConfig\G29Control.h
+	File Path	: DefaultComponent\DefaultConfig\F310Control.h
 *********************************************************************/
 
-#ifndef G29Control_H
-#define G29Control_H
+#ifndef F310Control_H
+#define F310Control_H
 
-//## class G29Control
+//## class F310Control
 #include "JsControl.h"
 //## package Default
 
-//## class G29Control
-class G29Control : public JsControl {
+//## class F310Control
+class F310Control : public JsControl {
     ////    Constructors and destructors    ////
     
 public :
 
     //## auto_generated
-    G29Control(void);
+    F310Control(Joystick& joystick);
     
     //## auto_generated
-    ~G29Control(void);
+    ~F310Control(void);
 
     //## operation singleLoop()
     JsControlState singleLoop(void);
-
-    //## operation waitForStart()
-    void waitForStart(void);
 };
 
 #endif
 /*********************************************************************
-	File Path	: DefaultComponent\DefaultConfig\G29Control.h
+	File Path	: DefaultComponent\DefaultConfig\F310Control.h
 *********************************************************************/
