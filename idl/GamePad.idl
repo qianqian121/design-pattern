@@ -30,6 +30,10 @@ struct ControllerCommands {
     short    throttle;
     boolean    deadswitch;
     short    desired_speed;
+    short proportional_gain;
+    short integral_gain;
+    short integral_effort;
+
 };
 
 struct VehicleTelemetry{
@@ -45,4 +49,5 @@ struct VehicleTelemetry{
     short vehicleStatus;
     short vehicleState;
     short gear;
+    short velocity_error;
 };
