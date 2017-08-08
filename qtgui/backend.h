@@ -17,13 +17,19 @@ class BackEnd : public QObject
     Q_PROPERTY(double roadWheelAngle READ roadWheelAngle WRITE setRoadWheelAngle NOTIFY roadWheelAngleChanged)
     Q_PROPERTY(double velocityMPH READ velocityMPH WRITE setVelocityMPH NOTIFY velocityMPHChanged)
     Q_PROPERTY(double velocityKPH READ velocityKPH WRITE setVelocityKPH NOTIFY velocityKPHChanged)
+    Q_PROPERTY(double velocitySetPoint READ velocitySetPoint WRITE setVelocitySetPoint NOTIFY velocitySetPointChanged)
+    Q_PROPERTY(double velocityError READ velocityError WRITE setVelocityError NOTIFY velocityErrorChanged)
+    Q_PROPERTY(double proportionalGain READ proportionalGain WRITE setProportionalGain NOTIFY proportionalGainChanged)
+    Q_PROPERTY(double integralGain READ integralGain WRITE setIntegralGain NOTIFY integralGainChanged)
+    Q_PROPERTY(double integralEffort READ integralEffort WRITE setIntegralEffort NOTIFY integralEffortChanged)
     Q_PROPERTY(QString vehicleStatus READ vehicleStatus WRITE setVehicleStatus NOTIFY vehicleStatusChanged)
     Q_PROPERTY(QString vehicleState READ vehicleState WRITE setVehicleState NOTIFY vehicleStateChanged)
     Q_PROPERTY(QString steeringState READ steeringState WRITE setSteeringState NOTIFY steerStateChanged)
     Q_PROPERTY(QString throttleState READ throttleState WRITE setThrottleState NOTIFY throttleStateChanged)
     Q_PROPERTY(QString brakeState READ brakeState WRITE setBrakeState NOTIFY brakeStateChanged)
-    Q_PROPERTY(bool isMoving READ isMoving WRITE setIsMoving NOTIFY isMovingChanged)
     Q_PROPERTY(QString sysInfo READ sysInfo WRITE setSysInfo NOTIFY sysInfoChanged)
+    Q_PROPERTY(bool isMoving READ isMoving WRITE setIsMoving NOTIFY isMovingChanged)
+    Q_PROPERTY(bool isControllerOn READ isControllerOn WRITE setIsControllerOn NOTIFY isControllerOnChanged)
 
 public:
     explicit BackEnd(QObject *parent = nullptr);
@@ -55,6 +61,24 @@ public:
     double velocityKPH();
     void setVelocityKPH(double val);
 
+    double velocitySetPoint();
+    void setVelocitySetPoint(double val);
+
+    double proportionalGain();
+    void setProportionalGain(double val);
+
+    double integralGain();
+    void setIntegralGain(double val);
+
+    double integralEffort();
+    void setIntegralEffort(double val);
+
+    double velocityError();
+    void setVelocityError(double val);
+
+    bool isControllerOn();
+    void setIsControllerOn(bool val);
+
     QString vehicleStatus();
     void setVehicleStatus(QString qstring);
 
@@ -76,7 +100,7 @@ public:
     QString sysInfo();
     void setSysInfo(QString qString);
 
-signals:
+    signals:
     void throttleChanged();
     void brakeChanged();
     void throttlePositionChanged();
@@ -93,6 +117,12 @@ signals:
     void throttleStateChanged();
     void brakeStateChanged();
     void sysInfoChanged();
+    void velocitySetPointChanged();
+    void velocityErrorChanged();
+    void proportionalGainChanged();
+    void integralGainChanged();
+    void integralEffortChanged();
+    void isControllerOnChanged();
 
 private:
     double m_throttle;
@@ -100,17 +130,22 @@ private:
     double m_steeringAngle;
     double m_velocityMPH;
     double m_velocityKPH;
-    QString m_vehicleStatus;
-    QString m_vehicleState;
-    bool m_isMoving;
-
-    QString m_steeringState;
-    QString m_throttleState;
-    QString m_brakeState;
     double m_handWheelAngle;
     double m_roadWheelAngle;
     double m_throttlePosition;
     double m_brakePosition;
+    double m_velocitySetPoint;
+    double m_velocityError;
+    double m_proportionalGain;
+    double m_integralGain;
+    double m_integralEffort;
+    bool m_isMoving;
+    bool m_isControllerOn;
+    QString m_vehicleStatus;
+    QString m_vehicleState;
+    QString m_steeringState;
+    QString m_throttleState;
+    QString m_brakeState;
     QString m_sysInfo;
 };
 

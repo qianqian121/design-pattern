@@ -5,27 +5,27 @@ import backend 1.0
 ApplicationWindow
 {
     visible: true
-    width: 784
+    width: 900
     height: 900
 
     MouseArea {
         id: mouseArea1
-        anchors.rightMargin: -73
-        anchors.bottomMargin: -146
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
+        anchors.rightMargin: -82
+        anchors.bottomMargin: -285
+        anchors.leftMargin: 9
+        anchors.topMargin: 139
         anchors.fill: parent
 
         Text {
-            x: 132
-            y: 434
+            x: 109
+            y: 256
             text: qsTr("Throttle")
         }
         ProgressBar {
             value: backend.throttlePosition
             id: throttleReadingBar
-            x: 77
-            y: 503
+            x: 54
+            y: 325
             width: 206
             maximumValue: 100
             visible: true
@@ -37,8 +37,9 @@ ApplicationWindow
             value: backend.throttle
             updateValueWhileDragging: true
             id: throttleCommandBar
-            x: 77
-            y: 461
+            x: 54
+            y: 283
+            width: 220
             maximumValue: 100
             onValueChanged: backend.throttle = value
 
@@ -46,10 +47,11 @@ ApplicationWindow
 
         Text {
             id: throttleReadingText
-            x: 309
-            y: 507
+            x: 286
+            y: 329
             text: backend.throttlePosition
             font.pixelSize: 14
+
 
 
         }
@@ -57,23 +59,23 @@ ApplicationWindow
         TextField {
             text: backend.throttle
             id: throttleCommandText
-            x: 309
-            y: 463
+            x: 286
+            y: 285
             font.pointSize: 12
             placeholderText: backend.throttle
             onTextChanged: backend.throttle = text
         }
 
         Text {
-            x: 140
-            y: 532
+            x: 118
+            y: 360
             text: qsTr("Brake")
         }
 
         ProgressBar {
             id: brakeReadingBar
-            x: 80
-            y: 611
+            x: 57
+            y: 433
             width: 206
             maximumValue: 100
             value: backend.brakePosition
@@ -83,8 +85,9 @@ ApplicationWindow
 
         Slider {
             id: brakeCommandBar
-            x: 77
-            y: 560
+            x: 54
+            y: 382
+            width: 220
             maximumValue: 100
             value: backend.brake
             updateValueWhileDragging: true
@@ -93,16 +96,16 @@ ApplicationWindow
 
         Text {
             id: brakeReadingText
-            x: 309
-            y: 615
+            x: 286
+            y: 437
             text: backend.brakePosition
             font.pixelSize: 14
         }
 
         TextField {
             id: brakeCommandText
-            x: 309
-            y: 562
+            x: 286
+            y: 384
             text: backend.brake
             placeholderText: backend.brake
             font.pointSize: 12
@@ -110,15 +113,15 @@ ApplicationWindow
         }
 
         Text {
-            x: 249
-            y: 658
+            x: 213
+            y: 480
             text: qsTr("Steering Angle")
         }
 
         ProgressBar {
             id: rightSteeringReadingBar
-            x: 300
-            y: 756
+            x: 269
+            y: 567
             width: 206
             maximumValue: 500
             minimumValue: -500
@@ -129,8 +132,8 @@ ApplicationWindow
 
         Text {
             id: steeringReadingText
-            x: 523
-            y: 709
+            x: 535
+            y: 523
             text: backend.steeringAngle
             font.pixelSize: 14
         }
@@ -141,8 +144,8 @@ ApplicationWindow
 
         ProgressBar {
             id: leftSteeringReadingBar
-            x: 88
-            y: 756
+            x: 57
+            y: 567
             width: 206
             rotation: 180
             orientation: 1
@@ -155,8 +158,9 @@ ApplicationWindow
 
         Slider {
             id: rightSteeringCommandBar
-            x: 300
-            y: 703
+            x: 269
+            y: 516
+            width: 220
             value: backend.steeringAngle
             updateValueWhileDragging: true
             maximumValue: 500
@@ -166,11 +170,13 @@ ApplicationWindow
 
         Slider {
             id: leftSteeringCommandBar
-            x: 94
+            x: 64
+            width: 220
+            height: 28
             anchors.right: parent.right
-            anchors.rightMargin: 557
+            anchors.rightMargin: 703
             anchors.top: parent.top
-            anchors.topMargin: 703
+            anchors.topMargin: 514
             rotation: 180
             value: -backend.steeringAngle
             updateValueWhileDragging: true
@@ -181,8 +187,8 @@ ApplicationWindow
 
         ProgressBar {
             id: rightRoadWheel
-            x: 300
-            y: 814
+            x: 269
+            y: 625
             width: 206
             visible: true
             maximumValue: 35
@@ -193,8 +199,8 @@ ApplicationWindow
 
         ProgressBar {
             id: leftRoadWheel
-            x: 88
-            y: 814
+            x: 57
+            y: 625
             width: 206
             visible: true
             maximumValue: 35
@@ -207,36 +213,36 @@ ApplicationWindow
 
         Text {
             id: text4
-            x: 241
-            y: 737
+            x: 210
+            y: 548
             text: qsTr("Hand Wheel Angle")
             font.pixelSize: 14
         }
 
         Text {
             id: text5
-            x: 241
-            y: 792
+            x: 210
+            y: 603
             text: qsTr("Road Wheel Angle")
             font.pixelSize: 14
         }
 
         Text {
-            x: 569
-            y: 467
+            x: 488
+            y: 375
             text: qsTr("Throttle State")
         }
 
         Text {
-            x: 75
-            y: 199
+            x: 69
+            y: 24
             text: qsTr("Vehicle State")
         }
 
         ProgressBar {
             id: velocityMPHBar
-            x: 69
-            y: 309
+            x: 54
+            y: 141
             width: 206
             visible: true
             maximumValue: 100
@@ -246,16 +252,16 @@ ApplicationWindow
 
         Text {
             id: velocityMPHText
-            x: 300
-            y: 313
+            x: 285
+            y: 145
             text: backend.velocityMPH
             font.pixelSize: 14
         }
 
         ProgressBar {
             id: velocityKPHBar
-            x: 66
-            y: 376
+            x: 51
+            y: 208
             width: 206
             visible: true
             maximumValue: 160
@@ -265,111 +271,206 @@ ApplicationWindow
 
         Text {
             id: velocityKPHbar
-            x: 300
-            y: 380
+            x: 285
+            y: 212
             text: backend.velocityKPH
             font.pixelSize: 14
         }
 
         Text {
-            x: 300
-            y: 199
+            x: 294
+            y: 24
             text: qsTr("Vehicle Status")
         }
 
         CheckBox {
             id: checkBox1
-            x: 509
-            y: 292
+            x: 545
+            y: 24
             text: qsTr("Is Moving")
             checked: backend.isMoving
         }
 
         Text {
             id: vehicleStateText
-            x: 75
-            y: 230
+            x: 69
+            y: 55
             text: backend.vehicleState
         }
 
         Text {
             id: vehicleStatusText
-            x: 300
-            y: 230
+            x: 294
+            y: 55
             text: backend.vehicleStatus
         }
 
         Text {
-            x: 115
-            y: 276
+            x: 100
+            y: 108
             text: qsTr("Velocity MPH")
         }
 
         Text {
-            x: 128
-            y: 348
+            x: 113
+            y: 180
             text: qsTr("Velocity KPH")
         }
 
         Text {
-            x: 578
-            y: 547
+            x: 488
+            y: 417
+            width: 79
+            height: 14
             text: qsTr("Brake State")
         }
 
         Text {
             id: throttleStateText
-            x: 532
-            y: 503
+            x: 666
+            y: 375
             text: backend.throttleState
         }
 
         Text {
             id: brakeStateText
-            x: 540
-            y: 591
+            x: 665
+            y: 417
             text: backend.brakeState
         }
 
         Text {
-            x: 564
-            y: 628
+            x: 488
+            y: 468
             text: qsTr("Steer State")
         }
 
         Text {
             id: steerStateText
-            x: 515
-            y: 658
+            x: 666
+            y: 468
             text: backend.steeringState
         }
 
         Text {
             id: handWheelReadingText
-            x: 526
-            y: 760
+            x: 535
+            y: 574
             text: backend.handWheelAngle
             font.pixelSize: 14
         }
 
         Text {
             id: roadWheelReadingText
-            x: 526
-            y: 818
+            x: 535
+            y: 632
             text: backend.roadWheelAngle
             font.pixelSize: 14
         }
 
         Text {
             id: sysInfoText
-            x: 15
-            y: 55
+            x: 21
+            y: -113
             width: 754
             height: 101
             text: backend.sysInfo
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 90
+        }
+
+        TextField {
+            id: throttleCommandText1
+            x: 714
+            y: 137
+            text: backend.velocitySetPoint
+            readOnly: false
+            placeholderText: backend.velocitySetPoint
+            font.pointSize: 12
+        }
+
+        Text {
+            x: 474
+            y: 141
+            text: qsTr("Velocity Set Point MPH")
+        }
+
+        Text {
+            x: 474
+            y: 220
+            text: qsTr("Proportional Gain")
+        }
+
+        Text {
+            x: 474
+            y: 260
+            text: qsTr("Integral Gain")
+        }
+
+        TextField {
+            id: throttleCommandText2
+            x: 714
+            y: 215
+            text: backend.proportionalGain
+            placeholderText: backend.proportionalGain
+            font.pointSize: 12
+            maximumLength: 10
+        }
+
+        TextField {
+            id: throttleCommandText3
+            x: 714
+            y: 256
+            text: backend.integralGain
+            placeholderText: backend.integralGain
+            font.pointSize: 12
+        }
+
+        Text {
+            x: 474
+            y: 106
+            text: qsTr("Controller")
+            font.pointSize: 14
+        }
+
+        Text {
+            x: 474
+            y: 298
+            text: qsTr("Integral Effort")
+        }
+
+        TextField {
+            id: throttleCommandText4
+            x: 714
+            y: 293
+            text: backend.integralEffort
+            placeholderText: backend.integralEffort
+            font.pointSize: 12
+        }
+
+        CheckBox {
+            id: checkBox2
+            x: 718
+            y: 106
+            text: qsTr("Deadman's Switch")
+            checked: backend.isControllerOn
+        }
+
+        Text {
+            x: 474
+            y: 180
+            text: qsTr("Velocity Error MPH")
+        }
+
+        TextField {
+            id: throttleCommandText5
+            x: 714
+            y: 176
+            text: backend.velocityError
+            placeholderText: backend.velocityError
+            font.pointSize: 12
+            readOnly: false
         }
     }
 }
