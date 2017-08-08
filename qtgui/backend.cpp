@@ -116,8 +116,15 @@ private:
         ptr->setThrottle((double)commands.throttle);
         std::cerr << commands.desired_speed << std::endl;
         ptr->setDesiredVelocity((double)commands.desired_speed);
-//        std::cerr << commands.dead_switch << std::endl;
-//        ptr->setDeadmanSwitch((bool)commands.dead_switch);
+        std::cerr << commands.dead_switch << std::endl;
+        ptr->setIsControllerOn((bool)commands.dead_switch);
+        std::cerr << commands.proportional_gain << std::endl;
+        ptr->setProportionalGain((double)commands.proportional_gain);
+        std::cerr << commands.integral_gain << std::endl;
+        ptr->setIntegralGain((double)commands.integral_gain);
+        std::cerr << commands.integral_effort << std::endl;
+        ptr->setIntegralEffort((double)commands.integral_effort);
+
 
     }
 
@@ -138,12 +145,17 @@ private:
         ptr->setRoadWheelAngle((double)telemetry.roadWheel);
         std::cerr << telemetry.isMoving << std::endl;
         ptr->setIsMoving((bool)telemetry.isMoving);
+        std::cerr<< telemetry.velocity_error << std::endl;
+        ptr->setVelocityError((double)telemetry.velocity_error);
 //        std::cerr << telemetry.isEstop << std::endl;
 //        ptr->setIsEstop((bool)telemetry.isEstop);
-        std::cerr << telemetry.vehicleStatus << std::endl;
-        ptr->setVehicleStatus((QSTRING)telemetry.vehicleStatus);
-        std::cerr << telemetry.vehicleState << std::endl;
-        ptr->setVehicleState((QSTRING)telemetry.vehicleState);
+//        std::cerr << telemetry.vehicleStatus << std::endl;
+//        ptr->setVehicleStatus((QSTRING)telemetry.vehicleStatus);
+//        std::cerr << telemetry.vehicleState << std::endl;
+//        ptr->setVehicleState((QSTRING)telemetry.vehicleState);
+
+
+        }
 //        std::cerr << telemetry.gear << std::endl;
 //        ptr->setGear((int)telemetry.gear);
     }
@@ -441,7 +453,7 @@ double BackEnd::velocityKPH()
 
 void BackEnd::setVehicleStatus(QString qstring)
 {
-    if(m_vehicleStatus == qstring)
+    if (m_vehicleStatus == qstring)
         return;
 
     m_vehicleStatus = qstring;
@@ -573,3 +585,70 @@ void BackEnd::setSysInfo(QString qString) {
     if (m_vehicleState == "READY")
         m_sysInfo = QString("READY");
 }
+
+double BackEnd::velocitySetPoint(){
+    return m_velocitySetPoint;
+}
+void BackEnd::setVelocitySetPoint(double val){
+    if(m_velocitySetPoint == val)
+        return;
+    m_velocitySetPoint = val;
+    emit velocitySetPointChanged();
+}
+
+double BackEnd::velocityError(){
+    return m_velocityError;
+}
+void BackEnd::setVelocityError(double val){
+    if(m_velocityError == val)
+        return;
+
+    m_velocityError = val;
+    velocityErrorChanged();
+}
+
+double BackEnd::proportionalGain(){
+    return m_proportionalGain;
+}
+void BackEnd::setProportionalGain(double val){
+    if(m_proportionalGain == val)
+        return;
+
+    m_proportionalGain = val;
+    proportionalGainChanged();
+}
+
+double BackEnd::integralGain(){
+    return m_integralGain;
+}
+void BackEnd::setIntegralGain(double val){
+    if(m_integralGain == val)
+        return;
+
+    m_integralGain = val;
+    integralGainChanged();
+}
+
+double BackEnd::integralEffort(){
+    return m_integralEffort;
+}
+void BackEnd::setIntegralEffort(double val){
+    if(m_integralEffort == val)
+        return;
+
+    m_integralEffort = val;
+    integralEffortChanged();
+}
+
+bool BackEnd::isControllerOn(){
+    return m_isControllerOn;
+}
+void BackEnd::setIsControllerOn(bool val){
+    if(m_isControllerOn == val)
+        return;
+
+    m_isControllerOn = val;
+    isControllerOnChanged();
+}
+
+
